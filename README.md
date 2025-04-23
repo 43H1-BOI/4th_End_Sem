@@ -253,6 +253,159 @@ public class VoterRegistration {
 Exception Caught: Age must be 18 or older to register.
 ```
 
+## Summary
+
+In Java Swing and AWT, **layout managers** control how components are arranged within containers:  
+- **FlowLayout** arranges components in a left-to-right flow, starting new rows as needed.  
+- **BorderLayout** divides a container into five regions—North, South, East, West, and Center—for placing single components in each region.  
+- **GridLayout** places components in a grid of equally sized cells determined by specified rows and columns.  
+
+**Serialization** is the process of converting an object's state into a byte stream for storage or transmission, and **deserialization** is the reverse process of reconstructing the object from that byte stream.  
+
+---
+
+## a) Layout Managers
+
+### FlowLayout  
+> The `FlowLayout` manager lays out components in a directional flow, much like text in a paragraph, wrapping to a new line when there is no more horizontal space. It is the default layout for every `JPanel` in Swing.  
+#### Example
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class FlowLayoutExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("FlowLayout Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); 
+        frame.add(new JButton("Button 1"));
+        frame.add(new JButton("Button 2"));
+        frame.add(new JButton("Button 3"));
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
+```
+- `FlowLayout.CENTER` centers components horizontally.  
+- Gaps of 10 pixels are set between components and between rows .
+
+### BorderLayout  
+>  `BorderLayout` arranges components in five regions: North, South, East, West, and Center. Each region can contain at most one component, and extra space is allocated to the center by default.  
+#### Example
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class BorderLayoutExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BorderLayout Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout(5, 5)); // hgap=5, vgap=5
+        frame.add(new JButton("North"), BorderLayout.NORTH);
+        frame.add(new JButton("South"), BorderLayout.SOUTH);
+        frame.add(new JButton("East"),  BorderLayout.EAST);
+        frame.add(new JButton("West"),  BorderLayout.WEST);
+        frame.add(new JButton("Center"),BorderLayout.CENTER);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
+    }
+}
+```
+- The two-parameter constructor `BorderLayout(int hgap, int vgap)` specifies horizontal and vertical gaps.  
+
+### GridLayout  
+> `GridLayout` divides the container into a grid of equal-sized cells specified by row and column counts . Each component occupies exactly one cell, and resizing the container adjusts all cells proportionally.  
+#### Example
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class GridLayoutExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("GridLayout Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(2, 3, 5, 5)); // 2 rows, 3 cols, gaps=5
+        for (int i = 1; i <= 6; i++) {
+            frame.add(new JButton("Button " + i));
+        }
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
+```
+- The constructor `GridLayout(rows, cols, hgap, vgap)` specifies gaps between cells citeturn3search0.
+
+---
+
+## b) Object Serialization and Deserialization
+
+### Definitions  
+- **Serialization** converts an object's state (its non-transient, non-static fields) into a platform-independent byte stream for persistence or network transfer citeturn2search0.  
+- **Deserialization** reconstructs the object from its byte stream, restoring it in memory with the original state citeturn2search0.
+
+### Implementing Serialization  
+1. **Implement `Serializable`**: Mark the class with `implements Serializable`.  
+2. **(Optional) `serialVersionUID`**: Declare a `private static final long serialVersionUID` to ensure version compatibility.  
+3. **Use `ObjectOutputStream`**: Wrap a `FileOutputStream` to call `writeObject()`.
+
+### Implementing Deserialization  
+1. **Use `ObjectInputStream`**: Wrap a `FileInputStream` to call `readObject()`.  
+2. **Cast returned `Object`**: Cast the result of `readObject()` back to the original class type.
+
+### Complete Example
+
+```java
+import java.io.*;
+
+// 1. Define a serializable class
+class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+    int age;
+    
+    Person(String name, int age) {
+        this.name = name;
+        this.age  = age;
+    }
+    
+    @Override
+    public String toString() {
+        return name + " (" + age + ")";
+    }
+}
+
+public class SerializeDemo {
+    public static void main(String[] args) {
+        Person p = new Person("Alice", 30);
+        
+        // 2. Serialize to file
+        try (FileOutputStream fos = new FileOutputStream("person.ser");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+             
+            oos.writeObject(p);
+            System.out.println("Object serialized to person.ser");
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        // 3. Deserialize from file
+        try (FileInputStream fis = new FileInputStream("person.ser");
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+             
+            Person p2 = (Person) ois.readObject();
+            System.out.println("Deserialized object: " + p2);
+            
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+- The `transient` field `password` is not serialized and thus becomes `null` upon deserialization.  
+- Exceptions `IOException` and `ClassNotFoundException` must be handled when reading objects citeturn2search0.
+
 ---
 
 ## Discrete Mathematics
