@@ -253,7 +253,7 @@ public class VoterRegistration {
 Exception Caught: Age must be 18 or older to register.
 ```
 
-## Summary
+### Q4 (a) Explain following layout managers with appropriate example: FlowLayout, BorderLayout, and GridLayout.
 
 In Java Swing and AWT, **layout managers** control how components are arranged within containers:  
 - **FlowLayout** arranges components in a left-to-right flow, starting new rows as needed.  
@@ -264,11 +264,11 @@ In Java Swing and AWT, **layout managers** control how components are arranged w
 
 ---
 
-## a) Layout Managers
+### a) Layout Managers
 
-### FlowLayout  
+#### FlowLayout  
 > The `FlowLayout` manager lays out components in a directional flow, much like text in a paragraph, wrapping to a new line when there is no more horizontal space. It is the default layout for every `JPanel` in Swing.  
-#### Example
+##### Example
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -289,9 +289,9 @@ public class FlowLayoutExample {
 - `FlowLayout.CENTER` centers components horizontally.  
 - Gaps of 10 pixels are set between components and between rows .
 
-### BorderLayout  
+#### BorderLayout  
 >  `BorderLayout` arranges components in five regions: North, South, East, West, and Center. Each region can contain at most one component, and extra space is allocated to the center by default.  
-#### Example
+##### Example
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -313,9 +313,9 @@ public class BorderLayoutExample {
 ```
 - The two-parameter constructor `BorderLayout(int hgap, int vgap)` specifies horizontal and vertical gaps.  
 
-### GridLayout  
+#### GridLayout  
 > `GridLayout` divides the container into a grid of equal-sized cells specified by row and column counts . Each component occupies exactly one cell, and resizing the container adjusts all cells proportionally.  
-#### Example
+##### Example
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -337,22 +337,21 @@ public class GridLayoutExample {
 
 ---
 
-## b) Object Serialization and Deserialization
-
-### Definitions  
+### Q2 (b) What is Object Seriali>ation and Deserialization? How can you read and write objeets to a file in Java (Give Complete Example)?
+#### Definitions  
 - **Serialization** converts an object's state (its non-transient, non-static fields) into a platform-independent byte stream for persistence or network transfer citeturn2search0.  
 - **Deserialization** reconstructs the object from its byte stream, restoring it in memory with the original state citeturn2search0.
 
-### Implementing Serialization  
+#### Implementing Serialization  
 1. **Implement `Serializable`**: Mark the class with `implements Serializable`.  
 2. **(Optional) `serialVersionUID`**: Declare a `private static final long serialVersionUID` to ensure version compatibility.  
 3. **Use `ObjectOutputStream`**: Wrap a `FileOutputStream` to call `writeObject()`.
 
-### Implementing Deserialization  
+#### Implementing Deserialization  
 1. **Use `ObjectInputStream`**: Wrap a `FileInputStream` to call `readObject()`.  
 2. **Cast returned `Object`**: Cast the result of `readObject()` back to the original class type.
 
-### Complete Example
+#### Complete Example
 
 ```java
 import java.io.*;
