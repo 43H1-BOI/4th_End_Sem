@@ -1,8 +1,18 @@
-# 4th_End_Sem
+# [4th_End_Sem](2k24_End_Sem.pdf)
+
+- ## JAVA
+- ## Discrete Mathematics
+- ## DCC
+- ## Entrepreneurship
+- ## Unix OS
+
+
+## JAVA
+
+<img src="Java_End_Sem_2024.png">
 
 ### **1. What is an abstract class?**
-
-An **abstract class** in object-oriented programming is a class that **cannot be instantiated directly**—it serves as a **blueprint for other classes**.
+> An **abstract class** in object-oriented programming is a class that **cannot be instantiated directly**—it serves as a **blueprint for other classes**.
 
 Key points:
 - It **may contain abstract methods** (methods without implementation) as well as fully implemented methods.
@@ -45,8 +55,7 @@ class Counter {
 ---
 
 ### **3. What do you mean by command line parameters?**
-
-**Command line parameters** are values passed to the `main()` method of a Java program **at runtime** through the terminal or command prompt.
+> **Command line parameters** are values passed to the `main()` method of a Java program **at runtime** through the terminal or command prompt.
 
 Example:
 ```java
@@ -64,7 +73,6 @@ Output: `Hello, Alice`
 ---
 
 ### **4. Explain the various uses of keyword `final`**
-
 The **`final` keyword** in Java can be used in three main contexts:
 
 #### a) Final variable
