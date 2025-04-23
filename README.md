@@ -12,7 +12,7 @@
 
 ---
 
-## 🔷 JAVA
+## JAVA
 
 ![Java Question Paper](Java_End_Sem_2024.png)
 
@@ -255,22 +255,22 @@ Exception Caught: Age must be 18 or older to register.
 
 ---
 
-## 🔶 Discrete Mathematics
+## Discrete Mathematics
 *Coming soon...*
 
 ---
 
-## 🔶 DCC
+## DCC
 *Coming soon...*
 
 ---
 
-## 🔶 Entrepreneurship
+## Entrepreneurship
 *Coming soon...*
 
 ---
 
-## 🔶 Unix OS
+## Unix OS
 *Coming soon...*
 
 ---
