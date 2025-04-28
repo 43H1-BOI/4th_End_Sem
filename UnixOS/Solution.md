@@ -24,11 +24,12 @@ The conceptual architecture of a UNIX system generally consists of:
 
 **Diagram: UNIX System Structure**
 
-![UNIX Architecture Diagram](images/placeholder_unix_architecture.png)
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_unix_architecture.png" width="500" height="300">
 
 **Diagram: UNIX Kernel Architecture**
 
-![UNIX Kernel Architecture Diagram](images/placeholder_kernel_architecture.png)
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_kernel_architecture.png" width="500" height="300">
+
 *(This diagram shows internal kernel components like the file subsystem, process control subsystem, scheduler, memory management, device drivers, hardware interface, and system call interface).*
 
 ### 2. UNIX Features & Advantages
@@ -99,7 +100,7 @@ The UNIX file system uses a single, unified, hierarchical tree structure.
 
 **Diagram: UNIX Directory Structure**
 
-![UNIX Directory Structure Diagram](images/placeholder_directory_structure.png)
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_directory_structure.png" width="500" height="300">
 
 **Key Predefined Directories:**
 
@@ -265,7 +266,7 @@ Changing the default source of standard input or the default destination of stan
 
 **Diagram: I/O Redirection Concept**
 
-![I/O Redirection Diagram](images/placeholder_io_redirection.png)
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_io_redirection.png" width="500" height="300">
 
 *(Illustrates keyboard as default stdin, monitor as default stdout/stderr, and redirection to/from files).*
 
@@ -329,8 +330,8 @@ Changing the default source of standard input or the default destination of stan
     *   **Zombie:** Terminated, but waiting for parent to collect exit status.
 
     **Diagram: Process State Model**
-    
-    ![Process State Diagram](images/placeholder_process_states.jpg)
+
+    <img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_process_states.jpg" width="500" height="300">
 
     *(Illustrates transitions between New, Ready, Running, Waiting, Terminated states).*
 
@@ -344,7 +345,7 @@ Changing the default source of standard input or the default destination of stan
 
 **Diagram: Process Creation (Fork/Exec)**
 
-![Process Creation Diagram](images/placeholder_process_creation.jpg)
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_process_creation.jpg" width="500" height="300">
 
 *(Shows shell -> fork -> child -> exec -> new program -> exit -> parent potentially waiting).*
 
