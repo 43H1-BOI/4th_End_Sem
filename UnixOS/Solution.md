@@ -330,7 +330,7 @@ Changing the default source of standard input or the default destination of stan
 
     **Diagram: Process State Model**
     
-    ![Process State Diagram](images/placeholder_process_states.png)
+    ![Process State Diagram](images/placeholder_process_states.jpg)
 
     *(Illustrates transitions between New, Ready, Running, Waiting, Terminated states).*
 
@@ -344,7 +344,7 @@ Changing the default source of standard input or the default destination of stan
 
 **Diagram: Process Creation (Fork/Exec)**
 
-![Process Creation Diagram](images/placeholder_process_creation.png)
+![Process Creation Diagram](images/placeholder_process_creation.jpg)
 
 *(Shows shell -> fork -> child -> exec -> new program -> exit -> parent potentially waiting).*
 
