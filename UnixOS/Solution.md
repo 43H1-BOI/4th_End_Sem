@@ -24,7 +24,7 @@ The conceptual architecture of a UNIX system generally consists of:
 
 **Diagram: UNIX System Structure**
 
-<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_unix_architecture.png" width="500" height="300">
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_unix_architecture.png" width="400" height="300">
 
 **Diagram: UNIX Kernel Architecture**
 
