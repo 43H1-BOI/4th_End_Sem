@@ -24,11 +24,11 @@ The conceptual architecture of a UNIX system generally consists of:
 
 **Diagram: UNIX System Structure**
 *(Place Diagram from [TP] Pg 11 or [Notes] Pg 3 here)*
-`![UNIX Architecture Diagram](images/placeholder_unix_architecture.png)`
+![UNIX Architecture Diagram](images/placeholder_unix_architecture.png)
 
 **Diagram: UNIX Kernel Architecture**
 *(Place Diagram from [Notes] Pg 5 here)*
-`![UNIX Kernel Architecture Diagram](images/placeholder_kernel_architecture.png)`
+![UNIX Kernel Architecture Diagram](images/placeholder_kernel_architecture.png)
 *(This diagram shows internal kernel components like the file subsystem, process control subsystem, scheduler, memory management, device drivers, hardware interface, and system call interface).*
 
 ### 2. UNIX Features & Advantages
@@ -68,13 +68,13 @@ The typical flow when a command is executed in the shell:
 1.  **Prompt:** The shell displays a prompt (e.g., `$`), indicating readiness.
 2.  **Input:** The user types a command line (command name, options, arguments) and presses Enter.
 3.  **Parsing:** The shell reads and parses the command line, breaking it into words and interpreting special characters (wildcards, quotes, redirection, pipes).
-4.  **Expansion:** The shell performs expansions (variable substitution like `$HOME`, command substitution like `$(pwd)`, filename expansion like `*.txt`).
+4.  **Expansion:** The shell performs expansions (variable substitution like `$HOME`, command substitution like `$(pwd), filename expansion like `*.txt`).
 5.  **Command Search:** The shell determines if the command is built-in or external. For external commands, it searches the directories listed in the `$PATH` environment variable to locate the executable file.
 6.  **Execution Setup:** The shell prepares for execution, often involving:
-    *   **`fork()`:** Creating a child process that is a copy of the shell.
+    *   **`fork():** Creating a child process that is a copy of the shell.
     *   **Redirection/Piping Setup:** Setting up file descriptors for input/output redirection or pipes if specified.
-    *   **`exec()`:** In the child process, replacing the shell's program image with the program to be executed.
-7.  **Kernel Invocation:** The `exec()` system call asks the kernel to run the new program.
+    *   **`exec():** In the child process, replacing the shell's program image with the program to be executed.
+7.  **Kernel Invocation:** The `exec() system call asks the kernel to run the new program.
 8.  **Process Execution:** The kernel schedules and runs the command's process.
 9.  **Output Handling:** The process sends its standard output and standard error, which the shell directs to the terminal (or files/pipes as redirected).
 10. **Waiting (Foreground):** If the command runs in the foreground, the shell waits for it to complete.
@@ -99,7 +99,7 @@ The UNIX file system uses a single, unified, hierarchical tree structure.
 
 **Diagram: UNIX Directory Structure**
 *(Place Diagram from [Notes] Pg 10 here)*
-`![UNIX Directory Structure Diagram](images/placeholder_directory_structure.png)`
+![UNIX Directory Structure Diagram](images/placeholder_directory_structure.png)
 
 **Key Predefined Directories:**
 
@@ -265,7 +265,7 @@ Changing the default source of standard input or the default destination of stan
 
 **Diagram: I/O Redirection Concept**
 *(Place Diagram from [Notes] Pg 19 here)*
-`![I/O Redirection Diagram](images/placeholder_io_redirection.png)`
+![I/O Redirection Diagram](images/placeholder_io_redirection.png)
 *(Illustrates keyboard as default stdin, monitor as default stdout/stderr, and redirection to/from files).*
 
 ### 16. `grep` Command
@@ -285,7 +285,7 @@ Changing the default source of standard input or the default destination of stan
 *   `-F`: Use Fixed strings (`fgrep`).
 
 **`egrep` vs `fgrep`:**
-*   `egrep` (`grep -E`): Faster for complex patterns using ERE metacharacters (`+`, `?`, `|`, `()`).
+*   `egrep` (`grep -E`): Faster for complex patterns using ERE metacharacters (`+`, `?`, `|`, `()).
 *   `fgrep` (`grep -F`): Fastest for literal string searches, treats all characters literally.
 
 ### 17. `head`/`tail` Commands
@@ -318,7 +318,7 @@ Changing the default source of standard input or the default destination of stan
 ### 20. Process Concepts
 
 *   **Process:** A running instance of a program, with its own PID, memory space, and resources.
-*   **Parent/Child:** A process that creates another (`fork()`) is the parent; the new one is the child.
+*   **Parent/Child:** A process that creates another (`fork()) is the parent; the new one is the child.
 *   **Process States:** Processes transition between various states during their lifecycle. Key states include:
     *   **New/Created:** Process is being created.
     *   **Ready:** Waiting to be assigned to a processor.
@@ -329,7 +329,7 @@ Changing the default source of standard input or the default destination of stan
 
     **Diagram: Process State Model**
     *(Place Diagram from [Notes] Pg 28 here)*
-    `![Process State Diagram](images/placeholder_process_states.png)`
+    ![Process State Diagram](images/placeholder_process_states.png)
     *(Illustrates transitions between New, Ready, Running, Waiting, Terminated states).*
 
 *   **Zombie Process:** A terminated process whose parent hasn't read its exit status yet; shown as `<defunct>` or `Z`.
@@ -338,11 +338,11 @@ Changing the default source of standard input or the default destination of stan
 
 ### 21. Process Creation & Management
 
-**Creation:** Typically via `fork()` (create copy) followed by `exec()` (replace program image). The parent can `wait()` for the child to finish.
+**Creation:** Typically via `fork() (create copy) followed by `exec() (replace program image). The parent can `wait() for the child to finish.
 
 **Diagram: Process Creation (Fork/Exec)**
 *(Place Diagram from [Notes] Pg 30 here)*
-`![Process Creation Diagram](images/placeholder_process_creation.png)`
+![Process Creation Diagram](images/placeholder_process_creation.png)
 *(Shows shell -> fork -> child -> exec -> new program -> exit -> parent potentially waiting).*
 
 **Management:** Kernel handles scheduling (CPU time), memory allocation, tracking state (PID, PPID, status), IPC, termination.
@@ -416,7 +416,7 @@ Changing the default source of standard input or the default destination of stan
 
 ### 30. Shell Operators
 
-*   **Arithmetic:** `` `expr OP1 + OP2` `` or `$((OP1 + OP2))`. Operators: `+ - \* / %`. (`*` needs escaping in `expr`).
+*   **Arithmetic:** `` `expr OP1 + OP2` `` or `$((OP1 + OP2)). Operators: `+ - \* / %`. (`*` needs escaping in `expr`).
 *   **Relational (Numeric):** Within `[ ]`: `-eq`, `-ne`, `-gt`, `-lt`, `-ge`, `-le`.
 *   **Boolean:** Within `[ ]`: `!` (not), `-a` (and), `-o` (or).
 *   **String:** Within `[ ]`: `=` (equal), `!=` (not equal), `-z` (zero length), `-n` (non-zero length). Use quotes: `[ "$a" = "$b" ]`.
@@ -456,9 +456,9 @@ Changing the default source of standard input or the default destination of stan
 *   **Metacharacters (Globbing):** `*` (0+ chars), `?` (1 char), `[...]` (any char in set). For filename expansion.
 *   **Quoting:**
     *   `'...'` (Single Quotes): Literal. No substitutions. Strongest.
-    *   `"..."` (Double Quotes): Allows `$var`, `` `cmd` ``, `$(cmd)`, `\`. Weak.
+    *   `"..."` (Double Quotes): Allows `$var`, `` `cmd` ``, `$(cmd), `\`. Weak.
     *   `\` (Backslash): Escape next character.
-    *   `` `cmd` `` or `$(cmd)` (Command Substitution): Replace with command output.
+    *   `` `cmd` `` or `$(cmd) (Command Substitution): Replace with command output.
 
 ### 33. Unix Environment
 
