@@ -1,6 +1,6 @@
-# UNIX Operating System Q&A
+# UNIX Exam Questions and Answers
 
-*Source Material: Based on questions from provided exam papers and answers derived from `unix_notes.pdf` and `unix_tutorial.pdf` within the repository.*
+*Source Material: Provided PDF files - "Initial Course Notes" (referred to as [Notes]) and "TutorialsPoint Unix Tutorial" (referred to as [TP]). Note that page numbers might vary slightly based on PDF reader.*
 
 ---
 
@@ -9,68 +9,75 @@
 ### 1. OS & UNIX Definition and Architecture
 
 **Operating System (OS) Definition:**
-An Operating System is fundamental system software that manages a computer's hardware and software resources. It acts as an intermediary between the user/applications and the physical hardware, providing essential services like process management, memory management, file systems, and device control. The core component is the **kernel**.
-*(Source:  unix_notes.pdf Pg 1;  unix_tutorial.pdf Pg 9)*
+An Operating System is system software that manages computer hardware and software resources, and provides common services for computer programs. It acts as an interface between the computer hardware and the user, managing tasks like process execution, memory allocation, file systems, and input/output operations. The core component interacting directly with hardware is the kernel.
+*(Source: [Notes] Pg 1; [TP] Pg 9)*
 
 **UNIX Definition:**
-UNIX is a highly influential operating system family, known for being portable, multitasking, and multiuser. Developed at Bell Labs starting in 1969, it allows multiple users to run multiple programs concurrently. Linux is a popular, open-source Unix-like operating system kernel.
-*(Source:  unix_notes.pdf Pg 1, 2;  unix_tutorial.pdf Pg 2, 9)*
+UNIX is a computer Operating System initially developed around 1969 at AT&T Bell Labs. It is characterized as a portable, multitasking (allowing multiple programs to run concurrently), and multiuser (allowing multiple users to access the system simultaneously) time-sharing operating system. Linux is a widely-used, independently developed, Unix-like operating system kernel and the basis for many popular OS distributions.
+*(Source: [Notes] Pg 1, 2; [TP] Pg 2, 9)*
 
 **UNIX Architecture:**
-The typical layered architecture includes:
+The conceptual architecture of a UNIX system generally consists of:
 
-1.  **Hardware:** The physical machine components.
-2.  **Kernel:** The core of the OS, directly managing hardware, scheduling tasks, handling memory, and providing system calls.
-3.  **Shell:** The command-line interpreter (CLI) acting as the user's interface to the kernel. It parses commands, manages jobs, and executes programs. Examples: `sh`, `bash`, `csh`, `ksh`.
-4.  **Application Programs / Commands & Utilities:** User-level software tools (`ls`, `vi`, `cc`, etc.) and applications that utilize the shell and kernel services.
+1.  **Hardware:** The underlying physical computer components.
+2.  **Kernel:** The core of the OS. It manages the hardware resources (CPU scheduling, memory management, device drivers), executes system calls, and controls file management. It isolates hardware from the user and applications.
+3.  **Shell:** The command-line interpreter (CLI) that acts as the interface between the user and the kernel. It reads user commands, interprets them (handling metacharacters, variables, etc.), finds and executes the corresponding programs, and manages job control. Common shells include `sh`, `bash`, `csh`, `ksh`, `tcsh`.
+4.  **Application Programs / Commands & Utilities:** User-level programs and standard UNIX utilities (`ls`, `grep`, `vi`, compilers, databases, etc.) that perform specific tasks. These programs interact with the shell and make system calls to the kernel to perform operations.
 
-*(Source:  unix_notes.pdf Pg 3, 4;  unix_tutorial.pdf Pg 2, 10, 11)*
-*Diagram Reference:  unix_notes.pdf Pg 3;  unix_tutorial.pdf Pg 11*
+*(Source: [Notes] Pg 3, 4; [TP] Pg 2, 10, 11)*
+
+*Diagram Reference: [Notes] Pg 3; [TP] Pg 11*
 
 ### 2. UNIX Features & Advantages
 
-Key characteristics and benefits of UNIX:
+UNIX offers several key features and advantages:
 
-*   **Multiuser:** Allows simultaneous access for multiple users. *(Source:  unix_notes.pdf Pg 1, 4;  unix_tutorial.pdf Pg 9)*
-*   **Multitasking:** Supports concurrent execution of multiple programs/processes. *(Source:  unix_notes.pdf Pg 1, 4;  unix_tutorial.pdf Pg 9)*
-*   **Portability:** Designed to be relatively easily moved to different hardware platforms. *(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 2)*
-*   **Hierarchical File System:** Organizes data in a logical tree structure (`/`). *(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 10, 16, 24)*
-*   **Powerful Shell:** Offers versatile CLI for interaction and scripting. *(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 11, 64)*
-*   **Rich Utilities:** Provides numerous small, focused command-line tools. *(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 11, 131)*
-*   **Pipes and Filters:** Allows chaining commands for complex data processing. *(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 47)*
-*   **Security:** Features user/group-based permissions for access control. *(Source:  unix_notes.pdf Pg 1, 4;  unix_tutorial.pdf Pg 20, 30)*
-*   **Networking:** Strong built-in networking support. *(Source:  unix_notes.pdf Pg 2;  unix_tutorial.pdf Pg 46, 135)*
+*   **Multiuser:** Supports multiple users accessing the system concurrently. *(Source: [Notes] Pg 1, 4; [TP] Pg 9)*
+*   **Multitasking:** Allows multiple processes (programs) to run simultaneously. *(Source: [Notes] Pg 1, 4; [TP] Pg 9)*
+*   **Portability:** Designed to be relatively easily adaptable to run on different hardware platforms, largely due to being written in C. *(Source: [Notes] Pg 4; [TP] Pg 2)*
+*   **Hierarchical File System:** A structured, tree-like organization for files and directories, simplifying data management. *(Source: [Notes] Pg 4; [TP] Pg 10, 16, 24)*
+*   **Powerful Shell Interface:** Provides a flexible and scriptable command-line interface for complex tasks and automation. *(Source: [Notes] Pg 4; [TP] Pg 11, 64)*
+*   **Rich Set of Utilities:** Includes a vast collection of small, specialized command-line tools that can be combined effectively. *(Source: [Notes] Pg 4; [TP] Pg 11, 131)*
+*   **Pipes and Filters:** Enables chaining commands together, using the output of one as input for the next. *(Source: [Notes] Pg 4; [TP] Pg 47)*
+*   **Security Model:** Provides file permissions and user/group management for access control. *(Source: [Notes] Pg 1, 4; [TP] Pg 20, 30)*
+*   **Networking Capabilities:** Strong, integrated support for network communication. *(Source: [Notes] Pg 2; [TP] Pg 46, 135)*
+*   **Machine Independence:** Aims to abstract hardware details from applications. *(Source: [Notes] Pg 4)*
 
 ### 3. UNIX vs. Windows
 
-| Feature           | UNIX (Typical/Linux)             | Windows                            | Source Ref ([Notes]) |
-| :---------------- | :------------------------------- | :--------------------------------- | :------------------- |
-| **Source**        | Often Open Source (Free)         | Proprietary (Paid)                 | Pg 2, 3              |
-| **UI**            | CLI (Shell) primary, GUI optional| GUI primary, CLI available       | Pg 2, 3              |
-| **Security**      | High, granular control         | Lower (historically), improving  | Pg 2, 3              |
-| **Tasking**       | Multitasking                     | Multitasking                       | Pg 2                 |
-| **Users**         | Multiuser native                 | Multiuser (Server), often single   | Pg 2                 |
-| **Case Sensitive**| Yes                              | No (filenames)                     | Pg 2                 |
-| **File System**   | Single Root Hierarchy (`/`)      | Drive-based Hierarchy (C:, D:)   | Pg 3                 |
-| **Customization** | High                             | Lower                              | Pg 3                 |
-| **Portability**   | High                             | Limited                            | Pg 2                 |
+| Feature           | UNIX (Typical/Linux)                   | Windows                                  | Source ([Notes]) |
+| :---------------- | :------------------------------------- | :--------------------------------------- | :--------------- |
+| **Source Code**   | Often open source (free)               | Proprietary (paid license)               | Pg 2, 3          |
+| **User Interface**| Primarily CLI (Shell), GUI available   | Primarily GUI, CLI available           | Pg 2, 3          |
+| **Security**      | Generally high, fine-grained control | Historically lower, improved over time | Pg 2, 3          |
+| **Tasking**       | Multitasking                           | Multitasking                             | Pg 2             |
+| **Users**         | Multiuser native                       | Multiuser (esp. Server), desktop often single | Pg 2             |
+| **Case Sensitive**| Yes (filenames, commands)              | No (filenames)                           | Pg 2             |
+| **Primary Use**   | Servers, development, embedded         | Desktops, servers, gaming                | Pg 2             |
+| **Customization** | Highly customizable                  | Less customizable                        | Pg 3             |
+| **File System**   | Single Hierarchical Tree (`/`)         | Multiple Drives (C:, D:), hierarchical   | Pg 3             |
+| **Portability**   | High                                   | Limited                                  | Pg 2             |
 
 ### 4. Command Execution Flow
 
-1.  **Prompt:** Shell signals readiness (`$`, `%`, etc.).
-2.  **Input:** User types command + arguments, presses Enter.
-3.  **Parsing:** Shell reads line, separates command/args, interprets special chars (`*`, `|`, `>`, `$`, `` ` ``).
-4.  **Expansion:** Shell performs variable (`$VAR`), command (`$(cmd)`), filename (`*.txt`) expansions.
-5.  **Search:** Shell checks if command is built-in. If not, searches directories in `$PATH` for the executable.
-6.  **Fork:** Shell creates a child process (copy of itself).
-7.  **Setup:** Child process sets up I/O redirection/pipes as needed.
-8.  **Exec:** Child process replaces itself with the command's program code.
-9.  **Execution:** Kernel runs the command process.
-10. **Output:** Command sends output/errors (usually to terminal via shell, unless redirected).
-11. **Wait:** Shell waits for foreground command completion.
-12. **Return:** Shell displays prompt again.
+The typical flow when a command is executed in the shell:
 
-*(Source:  unix_notes.pdf Pg 4;  unix_tutorial.pdf Pg 11, 64, command execution principles)*
+1.  **Prompt:** The shell displays a prompt (e.g., `$`), indicating readiness.
+2.  **Input:** The user types a command line (command name, options, arguments) and presses Enter.
+3.  **Parsing:** The shell reads and parses the command line, breaking it into words and interpreting special characters (wildcards, quotes, redirection, pipes).
+4.  **Expansion:** The shell performs expansions (variable substitution like `$HOME`, command substitution like `$(pwd)`, filename expansion like `*.txt`).
+5.  **Command Search:** The shell determines if the command is built-in or external. For external commands, it searches the directories listed in the `$PATH` environment variable to locate the executable file.
+6.  **Execution Setup:** The shell prepares for execution, often involving:
+    *   **`fork()`:** Creating a child process that is a copy of the shell.
+    *   **Redirection/Piping Setup:** Setting up file descriptors for input/output redirection or pipes if specified.
+    *   **`exec()`:** In the child process, replacing the shell's program image with the program to be executed.
+7.  **Kernel Invocation:** The `exec()` system call asks the kernel to run the new program.
+8.  **Process Execution:** The kernel schedules and runs the command's process.
+9.  **Output Handling:** The process sends its standard output and standard error, which the shell directs to the terminal (or files/pipes as redirected).
+10. **Waiting (Foreground):** If the command runs in the foreground, the shell waits for it to complete.
+11. **Completion & Prompt:** Once the command finishes, the shell typically regains control and displays the prompt again.
+
+*(Source: [Notes] Pg 4; [TP] Pg 11, 64, and general OS concepts)*
 
 ---
 
@@ -78,104 +85,169 @@ Key characteristics and benefits of UNIX:
 
 ### 5. File System Structure & Hierarchy
 
-**Concept:**
-The UNIX file system organizes all data (files, directories, devices) in a unified structure, typically starting from a single root. Everything is treated as a file.
-*(Source:  unix_notes.pdf Pg 7;  unix_tutorial.pdf Pg 10, 16, 154)*
+**File System Concept:**
+In UNIX, the file system provides a structured way to store, retrieve, and manage data. Almost everything is represented as a file, including documents, programs, directories, and even hardware devices. It organizes these files on storage media like hard disks.
+*(Source: [Notes] Pg 7; [TP] Pg 10, 16, 154)*
 
-**Structure:**
-A hierarchical tree:
-*   **Root (`/`):** The top-level directory.
-*   **Directories:** Containers for files and other directories.
-*   **Pathnames:** Unique addresses for files/directories.
-    *   *Absolute:* Start from `/` (e.g., `/usr/bin/ls`).
-    *   *Relative:* Start from the current directory (e.g., `../docs/file.txt`).
+**Hierarchical Structure:**
+The UNIX file system uses a single, unified, hierarchical tree structure.
+*   Starts at the **root directory**, denoted by a single slash (`/`).
+*   Contains directories (folders) that can hold files and other directories (subdirectories).
+*   Files and directories are located using **pathnames**, which are sequences of directory names separated by `/`.
+    *   **Absolute Path:** Starts from the root directory (`/`). E.g., `/home/user/docs/report.txt`.
+    *   **Relative Path:** Starts from the current working directory. E.g., `docs/report.txt`.
 
-*(Source:  unix_notes.pdf Pg 10;  unix_tutorial.pdf Pg 10, 16, 24, 154)*
+*(Source: [Notes] Pg 10; [TP] Pg 10, 16, 24, 154)*
 
-**Key Directories:** See list in previous answer.
-*(Source:  unix_notes.pdf Pg 10;  unix_tutorial.pdf Pg 154)*
+**Key Predefined Directories:**
+
+*   `/`: Root directory.
+*   `/bin`: Essential user command binaries (like `ls`, `cp`, `cat`).
+*   `/sbin`: Essential system binaries (like `fdisk`, `init`).
+*   `/etc`: System configuration files (like `passwd`, `fstab`, `profile`).
+*   `/dev`: Device files representing hardware (like `/dev/sda`, `/dev/tty1`).
+*   `/home`: User home directories (e.g., `/home/student`).
+*   `/usr`: Secondary hierarchy containing user programs (`/usr/bin`), libraries (`/usr/lib`), documentation, etc.
+*   `/lib`: Essential shared libraries needed by programs in `/bin` and `/sbin`.
+*   `/tmp`: Temporary file storage.
+*   `/var`: Variable data files like logs (`/var/log`), mail spools (`/var/mail`).
+
+*(Source: [Notes] Pg 10; [TP] Pg 154)*
 
 ### 6. File Types & Attributes
 
-**Attributes (`ls -l` output):**
-File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
-*(Source:  unix_notes.pdf Pg 8, 11, 37;  unix_tutorial.pdf Pg 17, 18, 30)*
+**File Attributes:**
+Displayed by `ls -l`, key attributes include:
+*   File Type & Permissions
+*   Number of Hard Links
+*   Owner (User)
+*   Group
+*   Size (in bytes)
+*   Last Modification Timestamp
+*   Filename
 
-**Types (First char of `ls -l`):**
-*   `-`: Ordinary File (Text or Binary)
-*   `d`: Directory
-*   `l`: Symbolic Link
-*   `b`: Block Special File (Device)
-*   `c`: Character Special File (Device)
-*   `p`: Named Pipe (FIFO)
-*   `s`: Socket
-*(Source:  unix_notes.pdf Pg 9;  unix_tutorial.pdf Pg 18)*
+*(Source: [Notes] Pg 8, 11, 37; [TP] Pg 17, 18, 30)*
 
-**Hidden Files:** Names start with `.`, use `ls -a` to view. For configuration.
-*(Source:  unix_notes.pdf Pg 9, 11;  unix_tutorial.pdf Pg 19)*
+**File Types:**
+The first character in the `ls -l` output indicates the type:
+
+| Char | Type                 | Description                                      | Source         |
+| :--- | :------------------- | :----------------------------------------------- | :------------- |
+| `-`  | Ordinary File        | Contains data, text, or program code.          | [Notes] Pg 9; [TP] Pg 16, 18 |
+| `d`  | Directory            | Contains other files and directories.            | [Notes] Pg 9; [TP] Pg 16, 18 |
+| `l`  | Symbolic Link        | Pointer to another file or directory.          | [TP] Pg 18     |
+| `b`  | Block Special File   | Represents a block device (e.g., hard disk).   | [Notes] Pg 9; [TP] Pg 18     |
+| `c`  | Character Special File| Represents a character device (e.g., terminal). | [Notes] Pg 9; [TP] Pg 18     |
+| `p`  | Named Pipe (FIFO)    | For inter-process communication.                 | [TP] Pg 18     |
+| `s`  | Socket               | For inter-process or network communication.    | [TP] Pg 18     |
+
+**Ordinary File Subtypes:**
+*   **Text Files:** Contain human-readable characters (ASCII, UTF-8). *(Source: [Notes] Pg 9)*
+*   **Binary Files:** Contain non-printable characters, executable code, or structured data. *(Source: [Notes] Pg 9)*
+
+**Hidden Files:**
+Files or directories whose names start with a dot (`.`). Not shown by `ls` by default; use `ls -a`. Often used for configuration (e.g., `.profile`, `.bashrc`).
+*(Source: [Notes] Pg 9, 11; [TP] Pg 19)*
 
 ### 7. Permissions & Modes
 
-**Categories:** User (`u`), Group (`g`), Other (`o`), All (`a`).
-*(Source:  unix_notes.pdf Pg 8, 10, 37;  unix_tutorial.pdf Pg 20, 30)*
+**Permission Categories:**
+*   **User (u):** The owner of the file.
+*   **Group (g):** The group associated with the file.
+*   **Other (o):** All users not in the first two categories.
+*   **All (a):** Refers to user, group, and other collectively.
 
-**Types:** Read (`r`/4), Write (`w`/2), Execute (`x`/1). Meaning differs slightly for files vs. directories.
-*(Source:  unix_notes.pdf Pg 8, 37;  unix_tutorial.pdf Pg 20, 30, 31)*
+*(Source: [Notes] Pg 8, 10, 37; [TP] Pg 20, 30)*
 
-**Viewing:** `ls -l` (shows `rwx` for u, g, o).
-*(Source:  unix_notes.pdf Pg 11, 37, 38;  unix_tutorial.pdf Pg 17, 30)*
+**Permission Types:**
 
-**Changing (`chmod`):**
-*   **Symbolic:** `chmod [ugoa][+-=][rwx] file` (e.g., `chmod g+w data.txt`).
-    *(Source:  unix_notes.pdf Pg 38;  unix_tutorial.pdf Pg 21, 31)*
-*   **Octal (Absolute):** `chmod NNN file` where N is sum of r=4, w=2, x=1 for user, group, other (e.g., `chmod 755 script.sh`).
-    *(Source:  unix_notes.pdf Pg 38;  unix_tutorial.pdf Pg 22, 32)*
+| Type      | File Effect                     | Directory Effect                               | Value (Octal) |
+| :-------- | :------------------------------ | :--------------------------------------------- | :------------ |
+| **Read (r)** | View contents                   | List contents (filenames)                      | 4             |
+| **Write (w)**| Modify/delete contents          | Create/delete/rename files within it           | 2             |
+| **Execute (x)**| Run as a program              | Enter (cd into) / traverse                     | 1             |
 
-**SUID/SGID:** Special permissions (`s` in execute field) allowing temporary privilege escalation based on file owner/group.
-*(Source:  unix_tutorial.pdf Pg 24, 34, 35)*
+*(Source: [Notes] Pg 8, 37; [TP] Pg 20, 30, 31)*
+
+**Viewing Permissions (`ls -l`):**
+Displays a 10-character string: `[type][user-rwx][group-rwx][other-rwx]`.
+Example: `drwxr-x---` (Directory: owner=rwx, group=rx, other=no access).
+*(Source: [Notes] Pg 11, 37, 38; [TP] Pg 17, 30)*
+
+**Changing Permissions (`chmod`):**
+
+*   **Symbolic Mode:** Uses `u, g, o, a` and `+, -, =` with `r, w, x`.
+    *   `chmod u+x file` (Add execute for user)
+    *   `chmod go-w file` (Remove write for group and other)
+    *   `chmod a=r file` (Set permissions to read-only for all)
+    *(Source: [TP] Pg 21, 31)*
+*   **Absolute (Octal) Mode:** Uses 3 octal digits (0-7) representing permissions for user, group, and other. Each digit is the sum of values (r=4, w=2, x=1).
+    *   `chmod 755 script.sh` (Owner=rwx, Group=r-x, Other=r-x)
+    *   `chmod 640 data.txt` (Owner=rw-, Group=r--, Other=---)
+    *(Source: [Notes] Pg 38; [TP] Pg 22, 32)*
+
+**SUID/SGID:**
+Special permissions:
+*   **SUID (Set User ID):** If set on an executable, the process runs with the file *owner's* privileges. Shown as `s` instead of `x` in the user execute position (`rwsr-xr-x`). Useful for commands needing temporary root access (e.g., `passwd`).
+*   **SGID (Set Group ID):** If set on an executable, the process runs with the file *group's* privileges (`rwxr-sr-x`). If set on a directory (`drwxrwsr-x`), new files/dirs created inside inherit the directory's group.
+*(Source: [TP] Pg 24, 34, 35)*
 
 ### 8. Ownership
 
-**Concept:** Each file/directory belongs to one user (owner) and one group.
-*(Source:  unix_tutorial.pdf Pg 23, 33)*
+**Concept:**
+Every file/directory has one owner (user) and one group owner. These determine which permission set (user, group, other) applies to a user trying to access the file.
+*(Source: [TP] Pg 23, 33)*
 
-**Changing:**
-*   `chown <new_owner> <file>`: Change user owner (usually needs root).
-*   `chgrp <new_group> <file>`: Change group owner (usually needs owner permission & group membership, or root).
-*(Source:  unix_tutorial.pdf Pg 23, 24, 33, 34)*
+**Changing Ownership (`chown`):**
+Changes the user owner of a file/directory. Requires appropriate privileges (usually root, or file owner under specific system policies).
+*   **Syntax:** `chown <new_owner> <file(s)>`
+*   **Example:** `chown alice report.txt`
+*(Source: [TP] Pg 24, 33)*
+
+**Changing Group Ownership (`chgrp`):**
+Changes the group owner of a file/directory. Requires appropriate privileges (usually file owner belonging to the target group, or root).
+*   **Syntax:** `chgrp <new_group> <file(s)>`
+*   **Example:** `chgrp project-a report.txt`
+*(Source: [TP] Pg 24, 34)*
 
 ### 9. Basic File/Directory Commands
 
-*   **`ls`**: List contents (`-l`, `-a`). *(Source:  unix_notes.pdf Pg 11;  unix_tutorial.pdf Pg 16, 17, 19)*
-*   **`cat`**: Display/Combine/Create files (`>`, `>>`, `-b`). *(Source:  unix_notes.pdf Pg 11-13;  unix_tutorial.pdf Pg 20, 21)*
-*   **`cp`**: Copy (`-r` for directories). *(Source:  unix_tutorial.pdf Pg 13, 21)*
-*   **`mv`**: Move/Rename. *(Source:  unix_tutorial.pdf Pg 13, 22, 28)*
-*   **`rm`**: Remove files (`-i` prompt, `-r` recursive - **CAUTION**). *(Source:  unix_tutorial.pdf Pg 13, 22)*
-*   **`mkdir`**: Make directory (`-p` parents). *(Source:  unix_notes.pdf Pg 18;  unix_tutorial.pdf Pg 16, 26, 27)*
-*   **`rmdir`**: Remove *empty* directory. *(Source:  unix_notes.pdf Pg 18;  unix_tutorial.pdf Pg 18, 27)*
-*   **`pwd`**: Print Working Directory. *(Source:  unix_notes.pdf Pg 17;  unix_tutorial.pdf Pg 25)*
-*   **`cd`**: Change Directory (`~`, `.`, `..`, `-`). *(Source:  unix_notes.pdf Pg 18;  unix_tutorial.pdf Pg 18, 24, 25, 27)*
+*   **`ls`**: Lists directory contents. Options: `-l` (long), `-a` (all/hidden). *(Source: [Notes] Pg 11; [TP] Pg 16, 17, 19)*
+*   **`cat`**: Concatenate and display files. Options: `-b` (number non-blank lines). Used also for creation (`>`) and appending (`>>`). *(Source: [Notes] Pg 11, 12, 13; [TP] Pg 20, 21)*
+*   **`cp`**: Copy files/directories. Option: `-r` (recursive for directories). *(Source: [TP] Pg 13, 21)*
+*   **`mv`**: Move or rename files/directories. *(Source: [TP] Pg 13, 22, 28)*
+*   **`rm`**: Remove files. Options: `-i` (interactive prompt), `-r` (recursive for directories - **CAUTION**). *(Source: [TP] Pg 13, 22)*
+*   **`mkdir`**: Make directories. Option: `-p` (create parent directories as needed). *(Source: [Notes] Pg 18; [TP] Pg 16, 26, 27)*
+*   **`rmdir`**: Remove empty directories. *(Source: [Notes] Pg 18; [TP] Pg 18, 27)*
+*   **`pwd`**: Print Working Directory (show current location). *(Source: [Notes] Pg 17; [TP] Pg 25)*
+*   **`cd`**: Change Directory. Special args: `~` (home), `.` (current), `..` (parent), `-` (previous). *(Source: [Notes] Pg 18; [TP] Pg 18, 24, 25, 27)*
 
 ### 10. File Content Commands (`wc`)
 
-*   **`wc`**: Counts lines (`-l`), words (`-w`), bytes (`-c`).
-*(Source:  unix_notes.pdf Pg 39;  unix_tutorial.pdf Pg 12, 21)*
+*   **`wc`**: Word Count. Counts lines, words, and bytes/characters.
+    *   `wc file.txt`: Shows lines, words, bytes, filename.
+    *   `wc -l file.txt`: Count lines only.
+    *   `wc -w file.txt`: Count words only.
+    *   `wc -c file.txt`: Count bytes only.
+*(Source: [Notes] Pg 20, 39; [TP] Pg 12, 21)*
 
 ### 11. Mounting/Unmounting
 
-*   **`mount`**: Attach a filesystem to a mount point directory. *(Source:  unix_tutorial.pdf Pg 158)*
-*   **`umount`**: Detach a filesystem. *(Source:  unix_tutorial.pdf Pg 159)*
+*   **`mount`**: Attaches a filesystem (e.g., from a device like `/dev/sdb1`) to a specified directory (mount point, e.g., `/mnt/usb`), making its contents accessible. Running `mount` without arguments lists currently mounted filesystems.
+*   **`umount`**: Detaches a mounted filesystem. Specify either the device or the mount point. (Note: it's `umount`, not `unmount`).
+
+*(Source: [TP] Pg 158, 159)*
 
 ### 12. Utility Commands
 
-*   **`tty`**: Show terminal device name. *(Source:  unix_notes.pdf Pg 14)*
-*   **`cal`**: Show calendar. *(Source:  unix_notes.pdf Pg 13;  unix_tutorial.pdf Pg 11)*
-*   **`date`**: Show/set date and time. *(Source:  unix_notes.pdf Pg 13)*
-*   **`whoami`**: Show current username. *(Source:  unix_notes.pdf Pg 14;  unix_tutorial.pdf Pg 13)*
-*   **`who`**: Show logged-in users, terminal, time. *(Source:  unix_notes.pdf Pg 14;  unix_tutorial.pdf Pg 14)*
-*   **`users`**: List logged-in usernames. *(Source:  unix_tutorial.pdf Pg 13)*
-*   **`w`**: Show who is logged on and what they're doing. *(Source:  unix_tutorial.pdf Pg 14)*
-*   **`finger`**: Show user information (local/remote). *(Source:  unix_tutorial.pdf Pg 50, 62)*
+*   **`tty`**: Display terminal name connected to standard input. *(Source: [Notes] Pg 14)*
+*   **`cal`**: Display calendar (current month, specific month/year, or full year). *(Source: [Notes] Pg 13; [TP] Pg 11)*
+*   **`date`**: Display or set system date and time. *(Source: [Notes] Pg 13)*
+*   **`who`**: Show who is logged on (username, terminal, time). *(Source: [Notes] Pg 14; [TP] Pg 14)*
+*   **`whoami`**: Print effective user ID (current username). *(Source: [Notes] Pg 14; [TP] Pg 13)*
+*   **`users`**: Print usernames of currently logged-in users. *(Source: [TP] Pg 13)*
+*   **`w`**: Show who is logged on and what they are doing (more detail than `who`). *(Source: [TP] Pg 14)*
+*   **`finger`**: Display information about users (local or remote). *(Source: [TP] Pg 50, 62)*
 
 ---
 
@@ -183,54 +255,80 @@ File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
 
 ### 13. Filters
 
-**Definition:** Commands reading from stdin, processing, and writing to stdout. Used in pipelines.
-*(Source:  unix_notes.pdf Pg 20;  unix_tutorial.pdf Pg 37, 47)*
-**Examples:** `grep`, `sort`, `wc`, `head`, `tail`, `tr`, `cut`, `paste`, `uniq`, `sed`, `awk`, `more`.
+**Definition & Purpose:**
+A filter is a command that reads data from standard input, processes it (e.g., transforms, selects, counts), and writes the result to standard output. They are designed to be used in pipelines to perform complex data manipulation by chaining simple tools.
+*(Source: [Notes] Pg 20; [TP] Pg 4, 37, 47)*
+
+**Examples:** `grep`, `sort`, `head`, `tail`, `wc`, `cut`, `paste`, `uniq`, `tr`, `sed`, `awk`, `more`, `less`.
 
 ### 14. Piping
 
-**Concept:** Use `|` to send stdout of `cmd1` to stdin of `cmd2`.
-*(Source:  unix_notes.pdf Pg 20;  unix_tutorial.pdf Pg 37, 47)*
-**Example:** `ls -l | grep ".sh"`
+**Concept:**
+Piping uses the vertical bar (`|`) symbol to connect the standard output of one command directly to the standard input of the next command, creating a data processing pipeline.
+*(Source: [Notes] Pg 20; [TP] Pg 4, 37, 47)*
+
+**Example:** `ls -l | grep 'Aug' | sort -k 5n | head -n 5` (List files -> Filter for 'Aug' -> Sort by size (field 5, numeric) -> Show top 5 largest).
 
 ### 15. Redirection
 
-**Concept:** Change default input/output streams.
-*(Source:  unix_notes.pdf Pg 19;  unix_tutorial.pdf Pg 23, 121)*
+**Concept:**
+Changing the default source of standard input or the default destination of standard output/error.
+*(Source: [Notes] Pg 19; [TP] Pg 6, 23, 121, 122, 125)*
+
 **Operators:**
-*   `< file`: Stdin from file. *(Source:  unix_tutorial.pdf Pg 122)*
-*   `> file`: Stdout to file (overwrite). *(Source:  unix_tutorial.pdf Pg 121)*
-*   `>> file`: Stdout to file (append). *(Source:  unix_tutorial.pdf Pg 121)*
-*   `2> file`: Stderr to file. *(Source:  unix_tutorial.pdf Pg 125)*
-*   `&> file` or `> file 2>&1`: Stdout & Stderr to file. *(Source:  unix_tutorial.pdf Pg 125)*
-*   `<< DELIM`: Here Document (stdin from script lines until DELIM). *(Source:  unix_tutorial.pdf Pg 122)*
+*   `< file`: Redirect standard input from `file`.
+*   `> file`: Redirect standard output to `file` (overwrites).
+*   `>> file`: Redirect standard output to `file` (appends).
+*   `2> file`: Redirect standard error (fd 2) to `file`.
+*   `&> file` or `> file 2>&1`: Redirect both stdout and stderr to `file`.
+*   `<< DELIMITER`: "Here Document". Redirects lines following the command (until `DELIMITER`) as stdin.
 
 ### 16. `grep` Command
 
-**Purpose:** Search input for pattern matches.
-*(Source:  unix_notes.pdf Pg 41;  unix_tutorial.pdf Pg 37, 47)*
-**Options:** `-i` (ignore case), `-n` (line numbers), `-v` (invert), `-c` (count), `-l` (filenames), `-r`/`-R` (recursive), `-E` (egrep), `-F` (fgrep).
-*(Source:  unix_notes.pdf Pg 41;  unix_tutorial.pdf Pg 48)*
-**`egrep` vs `fgrep`:** `egrep` uses extended regex (faster complex), `fgrep` uses fixed strings (fastest literal).
-*(Source:  unix_notes.pdf Pg 23, 24)*
+**Purpose:** Searches input for lines matching a pattern (regular expression).
+*(Source: [Notes] Pg 20, 23, 41; [TP] Pg 4, 37, 47, 48)*
+
+**Syntax:** `grep [options] pattern [file...]`
+
+**Options:**
+*   `-i`: Ignore case.
+*   `-n`: Show line numbers.
+*   `-v`: Invert match (show non-matching lines).
+*   `-c`: Count matching lines.
+*   `-l`: List filenames with matches.
+*   `-r`, `-R`: Recursive search.
+*   `-E`: Use Extended Regular Expressions (`egrep`).
+*   `-F`: Use Fixed strings (`fgrep`).
+
+**`egrep` vs `fgrep`:**
+*   `egrep` (`grep -E`): Faster for complex patterns using ERE metacharacters (`+`, `?`, `|`, `()`).
+*   `fgrep` (`grep -F`): Fastest for literal string searches, treats all characters literally.
+*(Source: [Notes] Pg 23, 24)*
 
 ### 17. `head`/`tail` Commands
 
-*   **`head [-n N]`**: Show first N lines (default 10). *(Source:  unix_notes.pdf Pg 38)*
-*   **`tail [-n N] [-f]`**: Show last N lines (default 10); `-f` follows updates. *(Source:  unix_notes.pdf Pg 39)*
+*   **`head`**: Display first N lines (default 10). Option `-n N` or `-N`. *(Source: [Notes] Pg 20, 38; [TP] Pg 59 - mentioned in context)*
+*   **`tail`**: Display last N lines (default 10). Option `-n N` or `-N`. Option `-f` to follow file changes. *(Source: [Notes] Pg 21, 39; [TP] Pg 59 - mentioned in context)*
 
 ### 18. `sort` Command
 
-**Purpose:** Sort lines alphanumerically.
-*(Source:  unix_notes.pdf Pg 40;  unix_tutorial.pdf Pg 38, 49)*
-**Options:** `-n` (numeric), `-r` (reverse), `-f` (ignore case), `-u` (unique), `-k N` (sort key field N), `-t C` (field separator C).
-*(Source:  unix_notes.pdf Pg 41;  unix_tutorial.pdf Pg 49)*
+**Purpose:** Sorts lines of text.
+*(Source: [Notes] Pg 20, 23, 40; [TP] Pg 4, 38, 49)*
+
+**Options:**
+*   `-n`: Numeric sort.
+*   `-r`: Reverse order.
+*   `-f`: Fold case (ignore case).
+*   `-u`: Unique (output only first of identical lines).
+*   `-k N`: Sort on field N (fields separated by whitespace).
+*   `-t CHAR`: Use CHAR as field separator (with `-k`).
 
 ### 19. `pg`/`more` Commands
 
-**Purpose:** Paginate output (view screen by screen).
-*(Source:  unix_tutorial.pdf Pg 39, 50)*
-**Usage:** `command | more` or `more file`. Navigate: Spacebar, Enter, `q`.
+**Purpose:** Display output one screenful at a time (pagers). `more` is common, `less` is often preferred.
+*(Source: [TP] Pg 4, 39, 50)*
+
+**Usage:** `command | more` or `more filename`. Navigate with Spacebar (page), Enter (line), `q` (quit).
 
 ---
 
@@ -238,41 +336,57 @@ File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
 
 ### 20. Process Concepts
 
-*   **Process:** Running program instance (PID, memory). *(Source:  unix_notes.pdf Pg 27;  unix_tutorial.pdf Pg 41, 51)*
-*   **Parent/Child:** Creator/Created process (PPID). *(Source:  unix_notes.pdf Pg 27;  unix_tutorial.pdf Pg 44, 55)*
-*   **Zombie:** Terminated but not 'reaped' by parent (`<defunct>`). *(Source:  unix_notes.pdf Pg 29;  unix_tutorial.pdf Pg 44, 55)*
-*   **Orphan:** Parent terminated first; adopted by `init`. *(Source:  unix_tutorial.pdf Pg 44, 55)*
-*   **Daemon:** System background service (no terminal). *(Source:  unix_notes.pdf Pg 32;  unix_tutorial.pdf Pg 45, 55)*
+*   **Process:** A running instance of a program, with its own PID, memory space, and resources. *(Source: [Notes] Pg 27; [TP] Pg 4, 41, 51)*
+*   **Parent/Child:** A process that creates another (`fork()`) is the parent; the new one is the child. *(Source: [Notes] Pg 27; [TP] Pg 4, 44, 55)*
+*   **Zombie:** A terminated process whose parent hasn't read its exit status yet; shown as `<defunct>` or `Z`. *(Source: [Notes] Pg 29; [TP] Pg 4, 44, 55)*
+*   **Orphan:** A process whose parent terminated; adopted by `init` (PID 1). *(Source: [TP] Pg 4, 44, 55)*
+*   **Daemon:** A system background process, no controlling terminal (`tty` is `?`), often runs as root, provides services. *(Source: [Notes] Pg 32; [TP] Pg 4, 45, 55)*
 
 ### 21. Process Creation & Management
 
-**Creation:** `fork()` (creates copy) + `exec()` (replaces image). *(Source:  unix_notes.pdf Pg 30)*
-**Management:** Kernel handles scheduling, memory, state tracking (PID, PPID, status), IPC, termination. *(Source:  unix_notes.pdf Pg 1;  unix_tutorial.pdf Pg 10)*
+**Creation:** Typically via `fork()` (create copy) followed by `exec()` (replace program image). *(Source: [Notes] Pg 30; [TP] Pg 44 - concept, calls not explicitly named)*
+**Management:** Kernel handles scheduling (CPU time), memory allocation, tracking state (PID, PPID, status), IPC, termination. *(Source: [Notes] Pg 1; [TP] Pg 10 - kernel role)*
 
 ### 22. Foreground/Background Processes
 
-*   **Foreground:** Interactive, attached to terminal, shell waits. *(Source:  unix_notes.pdf Pg 31;  unix_tutorial.pdf Pg 41, 52)*
-*   **Background:** Detached, non-interactive input, shell continues. Use `&`. *(Source:  unix_notes.pdf Pg 31;  unix_tutorial.pdf Pg 42, 52)*
+*   **Foreground:** Runs interactively, attached to terminal, shell waits. Default execution. *(Source: [Notes] Pg 31; [TP] Pg 4, 41, 52)*
+*   **Background:** Runs detached from terminal, shell returns prompt immediately. Started with `&`. *(Source: [Notes] Pg 31; [TP] Pg 4, 42, 52)*
 
 ### 23. Process Status (`ps`) Command
 
-**Purpose:** Show running processes.
-*(Source:  unix_notes.pdf Pg 30;  unix_tutorial.pdf Pg 42, 53)*
-**Options:** `-f` (full), `-e` (all), `-l` (long), `-u user`, `aux` (BSD style).
-*(Source:  unix_tutorial.pdf Pg 53, 54)*
+**Purpose:** Display information about active processes.
+*(Source: [Notes] Pg 30; [TP] Pg 4, 42, 53)*
+
+**Options:**
+*   (No options): User's processes on current terminal.
+*   `-f`: Full format listing (UID, PID, PPID, C, STIME, TTY, TIME, CMD).
+*   `-e`: All processes system-wide.
+*   `-a`: All users' processes, including those without terminals (BSD style often `aux`).
+*   `-u user`: Processes for specific user.
+*   `-l`: Long format (more details like state S, priority PRI).
+*(Source: [TP] Pg 53, 54)*
 
 ### 24. Stopping Processes (`kill`) Command
 
-**Purpose:** Send signals (default SIGTERM 15) to terminate.
-*(Source:  unix_notes.pdf Pg 34;  unix_tutorial.pdf Pg 44, 54)*
-**Usage:** `kill PID` (terminate), `kill -9 PID` (force kill), `kill %JobId`.
-**Job ID vs PID:** Job ID is shell-local (`%1`), PID is system-wide. *(Source:  unix_tutorial.pdf Pg 45, 56)*
+**Purpose:** Send signals to processes, usually to terminate them.
+*(Source: [Notes] Pg 34; [TP] Pg 4, 44, 54)*
+
+**Syntax:** `kill [-signal] PID|%JobId`
+*   `kill PID`: Send default SIGTERM (15) - polite request to terminate.
+*   `kill -9 PID`: Send SIGKILL (9) - forceful termination.
+*   `kill %JobId`: Send signal to background job number.
+
+**Job ID vs PID:**
+*   PID: Unique System-wide Process ID.
+*   Job ID: Shell-specific number (`%1`, `%2`) for background/stopped jobs in that shell.
+*(Source: [TP] Pg 4, 45, 56)*
 
 ### 25. Process Monitoring (`top`) Command
 
-**Purpose:** Real-time interactive process viewer (CPU/Mem usage).
-*(Source:  unix_tutorial.pdf Pg 45, 55)*
-**Usage:** `top`. Interactive keys: `q`, `k`, `M`, `P`.
+**Purpose:** Dynamic real-time view of running processes, sorted by usage (CPU default). Interactive.
+*(Source: [TP] Pg 4, 45, 55)*
+
+**Usage:** Type `top`, use keys like `q` (quit), `k` (kill), `M` (sort memory), `P` (sort CPU).
 
 ---
 
@@ -280,66 +394,85 @@ File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
 
 ### 26. Shell Basics
 
-*   **Shell:** CLI, interface to kernel. *(Source:  unix_notes.pdf Pg 3, 47;  unix_tutorial.pdf Pg 10, 64)*
-*   **Types:** `sh`, `bash`, `csh`, `ksh`. *(Source:  unix_notes.pdf Pg 4, 47;  unix_tutorial.pdf Pg 11, 64)*
-*   **Prompt:** PS1 (main), PS2 (continuation). *(Source:  unix_notes.pdf Pg 50;  unix_tutorial.pdf Pg 28, 38, 64)*
-*   **Comments:** `#` ignored (except `#!`). *(Source:  unix_notes.pdf Pg 49;  unix_tutorial.pdf Pg 66)*
+*   **Shell:** Command-line interpreter, interface to kernel. *(Source: [Notes] Pg 3, 47; [TP] Pg 2, 5, 10, 11, 64)*
+*   **Types:** `sh`, `bash` (common Linux default), `csh`, `ksh`, `tcsh`. *(Source: [Notes] Pg 4, 47; [TP] Pg 11, 64)*
+*   **Prompt:** PS1 (primary, e.g., `$`), PS2 (secondary, e.g., `>`). *(Source: [Notes] Pg 50; [TP] Pg 4, 28, 38, 64)*
+*   **Comments:** `#` denotes a comment (except for `#!` shebang). *(Source: [Notes] Pg 49; [TP] Pg 5, 66)*
 
 ### 27. Shell Scripts
 
-*   **Definition:** File with shell commands. *(Source:  unix_notes.pdf Pg 48;  unix_tutorial.pdf Pg 65)*
-*   **Shebang:** `#!/bin/sh` (or other shell) on first line. *(Source:  unix_notes.pdf Pg 48;  unix_tutorial.pdf Pg 65)*
-*   **Execution:** Make executable (`chmod +x`) then `./script` OR `sh script`. *(Source:  unix_notes.pdf Pg 49;  unix_tutorial.pdf Pg 65)*
+*   **Definition:** Text file with shell commands, executed sequentially. *(Source: [Notes] Pg 48; [TP] Pg 5, 65)*
+*   **Shebang:** First line `#!/path/to/shell` specifies interpreter. *(Source: [Notes] Pg 48; [TP] Pg 65)*
+*   **Execution:** `chmod +x script.sh` then `./script.sh` OR `sh script.sh`. *(Source: [Notes] Pg 49; [TP] Pg 65)*
 
 ### 28. Shell Variables
 
-*   **Environment:** System-wide/inherited (`PATH`, `HOME`). UPPERCASE. *(Source:  unix_notes.pdf Pg 50;  unix_tutorial.pdf Pg 30, 41, 68)*
-*   **User-Defined:** Local to script/shell. *(Source:  unix_notes.pdf Pg 50;  unix_tutorial.pdf Pg 68)*
-*   **Define:** `NAME="Value"`. *(Source:  unix_notes.pdf Pg 50;  unix_tutorial.pdf Pg 68)*
-*   **Access:** `$NAME` or `${NAME}`. *(Source:  unix_notes.pdf Pg 51;  unix_tutorial.pdf Pg 37, 69)*
-*   **Read-only:** `readonly NAME`. *(Source:  unix_notes.pdf Pg 51;  unix_tutorial.pdf Pg 69)*
-*   **Unset:** `unset NAME`. *(Source:  unix_notes.pdf Pg 51;  unix_tutorial.pdf Pg 70)*
+*   **Environment Vars:** System/Shell defined, UPPERCASE convention, inherited. `HOME`, `PATH`, `USER`, `PS1`, `TERM`. *(Source: [Notes] Pg 37, 50; [TP] Pg 4, 30, 41, 68)*
+*   **User-Defined Vars:** Script/User defined, lowercase/mixed convention. *(Source: [Notes] Pg 50; [TP] Pg 68)*
+*   **Define:** `VARNAME="value"` (no spaces around `=`). *(Source: [Notes] Pg 50; [TP] Pg 68)*
+*   **Access:** `$VARNAME` or `${VARNAME}`. *(Source: [Notes] Pg 51; [TP] Pg 37, 69)*
+*   **Read-only:** `readonly VARNAME`. *(Source: [Notes] Pg 51; [TP] Pg 69)*
+*   **Unset:** `unset VARNAME`. *(Source: [Notes] Pg 51; [TP] Pg 70)*
 
 ### 29. Input (`read`) Command
 
-**Purpose:** Read user input into variables.
-*(Source:  unix_notes.pdf Pg 52)*
+**Purpose:** Read user input from stdin into variable(s). *(Source: [Notes] Pg 52; [TP] Pg 68 - context)*
 **Syntax:** `read var1 [var2...]`
 
 ### 30. Shell Operators
 
-*(Source:  unix_notes.pdf Pg 53-55;  unix_tutorial.pdf Pg 77-93)*
-*   **Arithmetic:** `expr ...` or `$((...))`. Ops: `+ - \* / %`.
-*   **Relational (Num):** `[ $a -eq $b ]`, `-ne`, `-gt`, `-lt`, `-ge`, `-le`.
-*   **Boolean:** `[ ! expr ]`, `[ expr1 -a expr2 ]`, `[ expr1 -o expr2 ]`.
-*   **String:** `[ "$a" = "$b" ]`, `!=`, `-z` (empty), `-n` (not empty).
-*   **File Test:** `[ -f file ]` (file), `[ -d dir ]` (directory), `[ -r file ]` (readable), `[ -w file ]` (writable), `[ -x file ]` (executable), `[ -s file ]` (not empty), `[ -e file ]` (exists).
+*(Source: [Notes] Pg 53-55; [TP] Pg 5, 77-93)*
+*   **Arithmetic:** `` `expr OP1 + OP2` `` or `$((OP1 + OP2))`. Operators: `+ - \* / %`. (`*` needs escaping in `expr`).
+*   **Relational (Numeric):** Within `[ ]`: `-eq`, `-ne`, `-gt`, `-lt`, `-ge`, `-le`.
+*   **Boolean:** Within `[ ]`: `!` (not), `-a` (and), `-o` (or).
+*   **String:** Within `[ ]`: `=` (equal), `!=` (not equal), `-z` (zero length), `-n` (non-zero length). Use quotes: `[ "$a" = "$b" ]`.
+*   **File Test:** Within `[ ]`: `-e` (exists), `-f` (is file), `-d` (is directory), `-r` (readable), `-w` (writable), `-x` (executable), `-s` (size > 0), `-L` (is link), `f1 -nt f2` (newer than), `f1 -ot f2` (older than).
 
 ### 31. Shell Control Flow
 
-*(Source:  unix_notes.pdf Pg 56-60;  unix_tutorial.pdf Pg 94-112)*
-*   **`if`:** `if [ cond ]; then ... fi`, `if...else...fi`, `if...elif...else...fi`.
-*   **`case`:** `case "$var" in pat1) ... ;; pat2) ... ;; *) ... ;; esac`.
-*   **`while`:** `while [ cond ]; do ... done`.
-*   **`for`:** `for var in list; do ... done`.
-*   **`until`:** `until [ cond ]; do ... done`.
-*   **Control:** `break` (exit loop), `continue` (next iteration).
+*(Source: [Notes] Pg 56-60; [TP] Pg 5, 6, 94-112)*
+*   **`if` Statements:**
+    *   `if [ cond ]; then ... fi`
+    *   `if [ cond ]; then ... else ... fi`
+    *   `if [ cond1 ]; then ... elif [ cond2 ]; then ... else ... fi`
+*   **`case` Statement:** Matches variable against patterns.
+    ```bash
+    case "$var" in
+      pat1) cmd ;;
+      pat2) cmd ;;
+      *) default_cmd ;;
+    esac
+    ```
+*   **`while` Loop:** Repeats while condition is true (tests before loop).
+    ```bash
+    while [ cond ]; do ... done
+    ```
+*   **`for` Loop:** Iterates over a list of items.
+    ```bash
+    for i in item1 item2 ...; do ... done
+    for f in *.txt; do ... done
+    ```
+*   **`until` Loop:** Repeats while condition is false (tests before loop).
+    ```bash
+    until [ cond ]; do ... done
+    ```
+*   **Loop Control:** `break` (exit loop), `continue` (next iteration).
 
 ### 32. Metacharacters (Wildcards) & Quoting
 
-*   **Wildcards (Globbing):** `*` (any string), `?` (any char), `[...]` (char set/range). For filename expansion. *(Source:  unix_notes.pdf Pg 9-metachar context;  unix_tutorial.pdf Pg 10, 19, 117)*
-*   **Quoting:** Controls interpretation.
-    *   `'...'`: Literal (strong).
-    *   `"..."`: Allows `$var`, `$(cmd)`, `` `cmd` ``, `\` escapes (weak).
-    *   `\`: Escapes next character.
-    *   `` `cmd` `` or `$(cmd)`: Command substitution (replace with output).
-*(Source:  unix_tutorial.pdf Pg 118-120)*
+*   **Metacharacters (Globbing):** `*` (0+ chars), `?` (1 char), `[...]` (any char in set). For filename expansion. *(Source: [Notes] Pg 9, 19; [TP] Pg 3, 10, 19, 117)*
+*   **Quoting:**
+    *   `'...'` (Single Quotes): Literal. No substitutions. Strongest.
+    *   `"..."` (Double Quotes): Allows `$var`, `` `cmd` ``, `$(cmd)`, `\`. Weak.
+    *   `\` (Backslash): Escape next character.
+    *   `` `cmd` `` or `$(cmd)` (Command Substitution): Replace with command output.
+*(Source: [TP] Pg 6, 118-120)*
 
 ### 33. Unix Environment
 
-*   **Concept:** Session settings via environment variables. *(Source:  unix_tutorial.pdf Pg 26, 37)*
-*   **Initialization Files:** `/etc/profile` (global), `~/.profile` or `~/.bash_profile` (user login). *(Source:  unix_tutorial.pdf Pg 27, 37)*
-*   **`PATH` Variable:** Directories searched for commands. `echo $PATH`, `export PATH="$PATH:/new"`. *(Source:  unix_notes.pdf Pg 50;  unix_tutorial.pdf Pg 27, 38, 41)*
+*   **Concept:** Set of variables defining user session settings. *(Source: [TP] Pg 4, 26, 37)*
+*   **Initialization:** `/etc/profile` (system-wide), `~/.profile` (user-specific) read at login (for Bourne-type shells). *(Source: [TP] Pg 27, 37)*
+*   **`PATH` Variable:** Colon-separated list of directories searched for commands. View with `echo $PATH`. Set with `export PATH="$PATH:/new/path"`. *(Source: [Notes] Pg 50; [TP] Pg 4, 27, 38, 41)*
 
 ---
 
@@ -347,12 +480,15 @@ File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
 
 ### 34. `vi` Editor Basics
 
-*(Source:  unix_notes.pdf Pg 20-21;  unix_tutorial.pdf Pg 52-62)*
-*   **Modes:** Command (default, `Esc`), Insert (`i, a, o, O`), Last Line/Ex (`:`).
-*   **Navigation:** `h, j, k, l` (arrows often work), `w, b, 0, $`, `G, gg`.
-*   **Saving/Quitting:** `:w`, `:q`, `:q!`, `:wq`, `:x`, `ZZ`.
-*   **Editing:** `x` (del char), `dd` (del line), `dw` (del word), `yy` (copy line), `yw` (copy word), `p/P` (paste).
-*   **Searching:** `/pattern` (forward), `?pattern` (backward), `n/N` (next/prev).
+*(Source: [Notes] Pg 20-21; [TP] Pg 4, 11, 52-62)*
+*   **Modes:**
+    *   **Command (Normal):** Default. Navigation, commands (`Esc` to enter).
+    *   **Insert:** Enter text (`i, a, o, O` to enter).
+    *   **Last Line (Ex):** Commands at bottom (`:` to enter).
+*   **Navigation:** `h, j, k, l`, `w`, `b`, `0`, `$`, `G`, `gg`.
+*   **Saving/Quitting:** `:w` (save), `:q` (quit), `:q!` (force quit), `:wq` or `:x` or `ZZ` (save & quit).
+*   **Editing:** `x` (delete char), `dd` (delete line), `dw` (delete word), `yy` (copy line), `yw` (copy word), `p`/`P` (paste after/before).
+*   **Searching:** `/pattern` (forward), `?pattern` (backward), `n`/`N` (next/prev match).
 
 ---
 
@@ -360,18 +496,19 @@ File Type, Permissions, Link Count, Owner, Group, Size, Modification Time, Name.
 
 ### 35. User/Group Management
 
-*(Source:  unix_tutorial.pdf Pg 161-165)*
-*   **Users:** Accounts (`/etc/passwd`, `/etc/shadow`). UID.
-*   **Groups:** Collections of users (`/etc/group`). GID.
-*   **Commands (Root often needed):**
-    *   `groupadd`, `groupdel`
-    *   `useradd`, `userdel` (use `passwd` after `useradd`)
-    *   `usermod`, `groupmod` (modify existing)
+*(Source: [TP] Pg 7, 159, 161-165)*
+*   **Users:** Accounts identified by username and UID (`/etc/passwd`, `/etc/shadow`).
+*   **Groups:** Collections of users identified by group name and GID (`/etc/group`).
+*   **Commands (require root):**
+    *   `groupadd <group>`: Create group.
+    *   `groupdel <group>`: Delete group.
+    *   `useradd [options] <user>`: Create user (use `passwd <user>` after).
+    *   `userdel [-r] <user>`: Delete user (`-r` removes home dir).
+    *   `usermod`, `groupmod`: Modify existing users/groups.
 
 ---
 
-**Topics Mentioned in Exams but NOT Covered by Provided Source PDFs:**
+**Topics Not Covered by Provided PDFs:**
 
-*   `man -k` command
-*   `apropos` command
-*   `sudo` command details (configuration, granting/checking specific rights).
+*   `man -k`, `apropos` commands.
+*   `sudo` command details (configuration, privilege checking).
