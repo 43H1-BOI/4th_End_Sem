@@ -28,7 +28,7 @@ The conceptual architecture of a UNIX system generally consists of:
 
 **Diagram: UNIX Kernel Architecture**
 
-<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_kernel_architecture.png" width="500" height="300">
+<img src="https://github.com/43H1-BOI/4th_End_Sem/blob/main/UnixOS/images/placeholder_kernel_architecture.png" width="500" height="400">
 
 *(This diagram shows internal kernel components like the file subsystem, process control subsystem, scheduler, memory management, device drivers, hardware interface, and system call interface).*
 
