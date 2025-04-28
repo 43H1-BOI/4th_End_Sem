@@ -23,11 +23,9 @@ The conceptual architecture of a UNIX system generally consists of:
 4.  **Application Programs / Commands & Utilities:** User-level programs and standard UNIX utilities (`ls`, `grep`, `vi`, compilers, databases, etc.) that perform specific tasks. These programs interact with the shell and make system calls to the kernel to perform operations.
 
 **Diagram: UNIX System Structure**
-*(Place Diagram from [TP] Pg 11 or [Notes] Pg 3 here)*
 ![UNIX Architecture Diagram](images/placeholder_unix_architecture.png)
 
 **Diagram: UNIX Kernel Architecture**
-*(Place Diagram from [Notes] Pg 5 here)*
 ![UNIX Kernel Architecture Diagram](images/placeholder_kernel_architecture.png)
 *(This diagram shows internal kernel components like the file subsystem, process control subsystem, scheduler, memory management, device drivers, hardware interface, and system call interface).*
 
@@ -98,7 +96,6 @@ The UNIX file system uses a single, unified, hierarchical tree structure.
     *   **Relative Path:** Starts from the current working directory. E.g., `docs/report.txt`.
 
 **Diagram: UNIX Directory Structure**
-*(Place Diagram from [Notes] Pg 10 here)*
 ![UNIX Directory Structure Diagram](images/placeholder_directory_structure.png)
 
 **Key Predefined Directories:**
@@ -264,8 +261,8 @@ Changing the default source of standard input or the default destination of stan
 *   `<< DELIMITER`: "Here Document". Redirects lines following the command (until `DELIMITER`) as stdin.
 
 **Diagram: I/O Redirection Concept**
-*(Place Diagram from [Notes] Pg 19 here)*
 ![I/O Redirection Diagram](images/placeholder_io_redirection.png)
+
 *(Illustrates keyboard as default stdin, monitor as default stdout/stderr, and redirection to/from files).*
 
 ### 16. `grep` Command
@@ -328,7 +325,6 @@ Changing the default source of standard input or the default destination of stan
     *   **Zombie:** Terminated, but waiting for parent to collect exit status.
 
     **Diagram: Process State Model**
-    *(Place Diagram from [Notes] Pg 28 here)*
     ![Process State Diagram](images/placeholder_process_states.png)
     *(Illustrates transitions between New, Ready, Running, Waiting, Terminated states).*
 
@@ -341,7 +337,6 @@ Changing the default source of standard input or the default destination of stan
 **Creation:** Typically via `fork() (create copy) followed by `exec() (replace program image). The parent can `wait() for the child to finish.
 
 **Diagram: Process Creation (Fork/Exec)**
-*(Place Diagram from [Notes] Pg 30 here)*
 ![Process Creation Diagram](images/placeholder_process_creation.png)
 *(Shows shell -> fork -> child -> exec -> new program -> exit -> parent potentially waiting).*
 
